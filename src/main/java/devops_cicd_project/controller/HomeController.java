@@ -9,6 +9,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "DevOps CI/CD Project - Application Running Successfully!!!";
+        return "Version 2 - Automatic CI/CD Deployment Successful!";
     }
 }
