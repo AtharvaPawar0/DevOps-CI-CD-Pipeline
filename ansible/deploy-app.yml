@@ -1,0 +1,20 @@
+
+---
+- name: Deploy Spring Boot application using Docker
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Pull latest application image from Docker Hub
+      command: docker pull atharvapawar24/devops-cicd-project:latest
+
+    - name: Remove old application container if it exists
+      shell: docker rm -f devops-app || true
+
+    - name: Start new application container
+      command: >
+        docker run -d
+        --restart unless-stopped
+        -p 8082:8081
+        --name devops-app
+        atharvapawar24/devops-cicd-project:latest
